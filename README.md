@@ -1,6 +1,6 @@
 # NearAI LangChain Integration
 
-`nearai_langchain` provides seamless integration between NearAI and LangChain, allowing developers to use NearAI's capabilities within their LangChain applications.
+`nearai_langchain` provides seamless integration between [NearAI](https://github.com/nearai/nearai) and [LangChain](https://github.com/langchain-ai/langchain), allowing developers to use NearAI's capabilities within their LangChain applications.
 
 ## 🚧 Development Status
 
