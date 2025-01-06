@@ -6,6 +6,39 @@
 
 This library is currently in active development.
 
+## 🎯 Key Purposes
+
+1. **Optional NearAI Inference Integration**
+   - Access model inference through NearAI's optimized infrastructure
+   - Maintain compatibility with standard LangChain for other use cases
+   - Seamlessly switch between NearAI and LangChain inference
+
+2. **NearAI Registry Integration**
+   - Register and manage agents in the NearAI registry
+   - Auto-generate or validate agent metadata
+   - Example `metadata.json`:
+     ```json
+     {
+       "category": "agent",
+       "name": "example_agent",
+       "namespace": "user.nearai",
+       "tags": ["example"],
+       "details": {
+         "agent": {
+           "defaults": {
+             "model": "accounts/fireworks/models/llama-v3p1-70b-instruct"
+           },
+           "framework": "langchain"  // Use "langchain" or "nearai" for inference
+         }
+       }
+     }
+     ```
+
+3. **Benchmarking and Evaluation**
+   - Run popular or user owned benchmarks on agents
+   - Upload evaluation results to NearAI evaluation table
+   - Support for both NearAI and LangChain inference frameworks
+
 ## 🌟 Features
 
 - Drop-in replacement for LangChain chat models
@@ -16,20 +49,24 @@ This library is currently in active development.
 ## 🚀 Quick Start
 
 ```python
-from nearai_langchain import NearAILangchain
-from nearai_langchain.chat_models.providers.fireworks import ChatFireworks
+import getpass
+import os
 
-# Initialize with NearAI framework
-NearAILangchain.init(framework="nearai")
+import nearai_langchain
+from langchain_core.messages import HumanMessage, SystemMessage
+from nearai_langchain.langchain_fireworks import ChatFireworks
 
-# Create chat model
+NearaiLangchain.init() # Reads metadata and inits either Langchain or NearAI. Supports "langchain" or "nearai" frameworks.
+
 model = ChatFireworks()
+# Alternatively to use provider from metadata: model = ChatProvider()
 
-# Use just like a regular LangChain chat model
-response = model.generate([
-    SystemMessage(content="You are a helpful assistant"),
-    HumanMessage(content="Hello!")
-])
+messages = [
+    SystemMessage("Translate the following from English into Italian"),
+    HumanMessage("hi!"),
+]
+
+model.invoke(messages)
 ```
 
 ## 📦 Installation
