@@ -15,6 +15,7 @@ This library is currently in active development.
 
 2. **NearAI Registry Integration**
    - Register and manage agents in the NearAI registry
+   - Optionally, enable agent-to-agent interaction and make your agents callable by other agents in the NearAI registry
    - Auto-generate or validate agent metadata
    - Example `metadata.json`:
      ```json
@@ -33,8 +34,12 @@ This library is currently in active development.
        }
      }
      ```
+3. **Agent Intercommunication**
+   - Upload agents to be used by other agents
+   - Call other agents from the registry in your own agents
+   - Framework-agnostic: works with both NearAI and LangChain inference
 
-3. **Benchmarking and Evaluation**
+4. **Benchmarking and Evaluation**
    - Run popular or user owned benchmarks on agents
    - Optionally, upload evaluation results to [NearAI evaluation table](https://app.near.ai/evaluations)
    - Support for both NearAI and LangChain inference frameworks
