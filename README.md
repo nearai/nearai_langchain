@@ -36,7 +36,7 @@ This library is currently in active development.
 
 3. **Benchmarking and Evaluation**
    - Run popular or user owned benchmarks on agents
-   - Upload evaluation results to NearAI evaluation table
+   - Optionally, upload evaluation results to [NearAI evaluation table](https://app.near.ai/evaluations)
    - Support for both NearAI and LangChain inference frameworks
 
 ## 🌟 Features
