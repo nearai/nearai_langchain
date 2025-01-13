@@ -27,7 +27,8 @@ This library is currently in active development.
        "details": {
          "agent": {
            "defaults": {
-             "model": "accounts/fireworks/models/llama-v3p1-70b-instruct"
+             "model": "llama-v3p1-70b-instruct",
+             "provider": "fireworks"
            },
            "framework": "langchain"  // Use "langchain" or "nearai" for inference
          }
@@ -59,12 +60,10 @@ import os
 
 import nearai_langchain
 from langchain_core.messages import HumanMessage, SystemMessage
-from nearai_langchain.langchain_fireworks import ChatFireworks
 
 NearaiLangchain.init() # Reads metadata and inits either Langchain or NearAI. Supports "langchain" or "nearai" frameworks.
 
-model = ChatFireworks()
-# Alternatively to use provider from metadata: model = ChatProvider()
+model = InferenceProvider()
 
 messages = [
     SystemMessage("Translate the following from English into Italian"),
@@ -96,5 +95,5 @@ pip install nearai-langchain
 
 3. Install development dependencies:
    ```bash
-   pip install -e ".[dev]"
+   python3 -m pip install -e .
    ```
