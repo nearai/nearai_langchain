@@ -1,0 +1,42 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        version: latest
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    
+    - name: Install dependencies
+      run: poetry install
+    - name: Install Codespell
+      run: pip install codespell
+    - name: Run Codespell
+      run: codespell --config .codespellrc
+    - name: check lock file for inconsistencies
+      run: poetry check --lock
+      
+    - name: Lint Check
+      run: ./scripts/lint_check.sh
+    - name: Format Check
+      run: ./scripts/format_check.sh
+    - name: Type Check
+      run: ./scripts/type_check.sh

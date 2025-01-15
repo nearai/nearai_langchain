@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Near AI dev
+.vscode/
+.nearai/
+/nearai/tests/test-agents/
+*.env

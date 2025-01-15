@@ -1,0 +1,78 @@
+[project]
+name = "nearai-langchain"
+version = "0.0.1"
+description = "NearAI LangChain Integration"
+authors = [{name = "Support", email = "support@near.ai"}]
+readme = "README.md"
+packages = [{include = "nearai_langchain"}]
+repository = "https://github.com/nearai/nearai_langchain"
+requires-python = ">=3.9,<3.12"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.11.0"
+ruff = "^0.5.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".git-rewrite",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "venv",
+]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "N",  # PEP8 naming conventions
+    "D",  # pydocstyle
+]
+ignore = [
+    "B008", # do not perform calls in argument defaults
+    "C901", # too complex
+    "C408", # dict() constructor
+    "C417", # enforce list comprehension
+    "W191", # indentation contains tabs
+    "D401", # imperative mood
+    "D100", # Missing docstring module
+    "D101", # Missing docstring in public class
+    "D103", # Missing docstring in public function
+    "D104", # Missing docstring in public package
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.mypy]
+strict = false
+disallow_untyped_calls = false
+disallow_untyped_decorators = false
+mypy_path = "typings"
+exclude = [
+    "venv",
+    ".venv",
+    ".vscode",
+    ".git",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".ruff_cache",
+    "__pypackages__",
+]

@@ -87,13 +87,13 @@ pip install nearai-langchain
    cd nearai_langchain
    ```
 
-2. Create a virtual environment:
+2. Install dependencies:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: .\venv\Scripts\activate
+   ./install.sh
    ```
 
-3. Install development dependencies:
-   ```bash
-   python3 -m pip install -e .
-   ```
+3. Development tools:
+- Run format check: `./scripts/format_check.sh`
+- Run linting: `./scripts/lint_check.sh`
+- Run type check: `./scripts/type_check.sh`
+   
