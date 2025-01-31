@@ -16,9 +16,9 @@ wallet_data_file = "wallet_data.txt"
 
 load_dotenv()
 
-orchestrator = NearAILangchainOrchestrator()
+orchestrator = NearAILangchainOrchestrator(globals())
 # To continue conversation in local mode:
-# orchestrator = NearAILangchainOrchestrator(thread_id="thread_xxxxxx")
+# orchestrator = NearAILangchainOrchestrator(globals(), thread_id="thread_xxxxxx")
 
 
 def initialize_agent():
