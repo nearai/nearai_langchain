@@ -26,7 +26,7 @@ env = orchestrator.env
 if orchestrator.run_mode == RunMode.LOCAL:
     print("Entering chat mode...")
     user_input = input("\nPrompt: ")
-    orchestrator.env.add_user_message(user_input)
+    env.add_user_message(user_input)
 
 messages = env.list_messages()
 for chunk in executor.stream({"messages": messages}):
