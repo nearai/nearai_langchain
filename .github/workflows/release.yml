@@ -72,7 +72,7 @@ jobs:
       run: poetry check --lock
 
     - name: Install dependencies
-      run: poetry install --extras explatform --extras hub
+      run: poetry install
 
     - name: Lint Check
       run: ./scripts/lint_check.sh
