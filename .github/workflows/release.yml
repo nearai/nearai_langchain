@@ -106,12 +106,20 @@ jobs:
       run: poetry build
       if: ${{ github.event.inputs.publish-pypi == 'true' }}
 
-    - name: Verify PyPI token
-      run: poetry config pypi-token.pypi ${{ secrets.POETRY_PYPI_TOKEN_PYPI }}
+    - name: Verify PyPI token is set
+      run: |
+        if [ -z "$POETRY_PYPI_TOKEN_PYPI" ]; then
+          echo "PyPI token is not set"
+          exit 1
+        else
+          echo "PyPI token is set"
+        fi
+      env:
+        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.POETRY_PYPI_TOKEN_PYPI }}
       if: ${{ github.event.inputs.publish-pypi == 'true' }}
       
     - name: Publish to PyPI
       env:
         POETRY_PYPI_TOKEN_PYPI: ${{ secrets.POETRY_PYPI_TOKEN_PYPI }}
-      run: poetry publish --vvv
+      run: poetry publish
       if: ${{ github.event.inputs.publish-pypi == 'true' }}
