@@ -13,6 +13,7 @@ langchain = "^0.3.4"
 langchain-fireworks = "^0.2.6"
 langchain-openai = "^0.2.4"
 cdp-langchain = "^0.0.13"
+pydantic = ">=2.7.1,<=2.10.6"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.11.0"
