@@ -1,3 +1,7 @@
+# This is a somewhat simplified version of
+# https://github.com/coinbase/agentkit/blob/master/cdp-langchain/examples/chatbot-python/chatbot.py
+# that adds nearai integration: inference, environment, and threads.
+
 import os
 
 from cdp_langchain.agent_toolkits import CdpToolkit
