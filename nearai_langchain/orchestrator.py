@@ -36,6 +36,7 @@ class NearAILangchainOrchestrator:
 
     def __init__(
         self,
+        globals: dict[str, Any],
         chat_model: Optional[BaseChatModel | NearAIChatModel] = None,
         skip_inference_framework_check: bool = False,
         thread_id: str = "",
@@ -44,6 +45,7 @@ class NearAILangchainOrchestrator:
 
         Args:
         ----
+            globals: globals()
             chat_model: Optional chat model to use. Can be either a LangChain chat model or NearAIChatModel.
                 LangChain chat model may use any provider.
                 If not provided, will create one based on metadata; fireworks and hyperbolic providers are supported.
@@ -58,7 +60,7 @@ class NearAILangchainOrchestrator:
             FileNotFoundError: If metadata.json is not found.
 
         """
-        self.run_mode = self._determine_run_mode()
+        self.run_mode = self._determine_run_mode(globals)
 
         metadata_path = "metadata.json"
         with open(metadata_path, "r") as file:
@@ -68,7 +70,7 @@ class NearAILangchainOrchestrator:
 
         # Initialize environment
         if self.run_mode == RunMode.REMOTE:
-            self.env = globals()["env"]
+            self.env = globals["env"]
         else:
             self.env = LocalEnvironment(thread_id, agent_data.agent_id)
 
@@ -91,9 +93,9 @@ class NearAILangchainOrchestrator:
             self.chat_model = chat_model
 
     @staticmethod
-    def _determine_run_mode() -> RunMode:
+    def _determine_run_mode(globals: dict[str, Any]) -> RunMode:
         """Determine the run mode based on the presence of env in globals."""
-        return RunMode.REMOTE if "env" in globals() else RunMode.LOCAL
+        return RunMode.REMOTE if "env" in globals else RunMode.LOCAL
 
     def invoke(  # noqa: D102
         self,
