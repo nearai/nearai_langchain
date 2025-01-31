@@ -11,6 +11,7 @@ requires-python = ">=3.10,<3.12"
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.11.0"
 ruff = "^0.5.2"
+commitizen = "^3.29.0"
 
 [tool.poetry.dependencies]
 nearai = "^0.1.6"
@@ -18,6 +19,14 @@ langchain = "^0.3.4"
 langchain-fireworks = "^0.2.6"
 langchain-openai = "^0.2.4"
 cdp-langchain = "^0.0.13"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_scheme = "semver2"
+version_provider = "poetry"
+update_changelog_on_bump = true
+major_version_zero = true
 
 [build-system]
 requires = ["poetry-core"]
