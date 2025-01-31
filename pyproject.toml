@@ -6,11 +6,18 @@ authors = [{name = "Support", email = "support@near.ai"}]
 readme = "README.md"
 packages = [{include = "nearai_langchain"}]
 repository = "https://github.com/nearai/nearai_langchain"
-requires-python = ">=3.9,<3.12"
+requires-python = ">=3.10,<3.12"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.11.0"
 ruff = "^0.5.2"
+
+[tool.poetry.dependencies]
+nearai = "^0.1.6"
+langchain = "^0.3.4"
+langchain-fireworks = "^0.2.6"
+langchain-openai = "^0.2.4"
+cdp-langchain = "^0.0.13"
 
 [build-system]
 requires = ["poetry-core"]
@@ -75,4 +82,5 @@ exclude = [
     ".mypy_cache",
     ".ruff_cache",
     "__pypackages__",
+    "examples",
 ]

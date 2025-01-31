@@ -1,0 +1,17 @@
+{
+  "name": "langchain_fireworks_example_usage",
+  "version": "0.0.1",
+  "description": "NEAR AI - Langchain Fireworks example usage",
+  "category": "agent",
+  "tags": [],
+  "details": {
+    "agent": {
+      "defaults": {
+        "model": "accounts/fireworks/models/llama-v3p1-70b-instruct",
+        "inference_framework": "nearai"
+      },
+      "framework": "agentkit"
+    }
+  },
+  "show_entry": true
+}

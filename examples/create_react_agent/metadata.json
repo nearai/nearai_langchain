@@ -1,0 +1,17 @@
+{
+    "name": "create_langchain_react_agent_example",
+    "version": "0.0.1",
+    "description": "Langchain create_react_agent example",
+    "category": "agent",
+    "tags": [],
+    "details": {
+      "agent": {
+        "defaults": {
+          "model": "accounts/fireworks/models/llama-v3p1-70b-instruct",
+          "inference_framework": "nearai"
+        },
+        "framework": "agentkit"
+      }
+    },
+    "show_entry": true
+  }
