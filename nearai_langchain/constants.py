@@ -1,0 +1,2 @@
+FIREWORKS = "fireworks"
+HYPERBOLIC = "hyperbolic"

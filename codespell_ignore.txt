@@ -3,3 +3,5 @@ afterall
 savable
 nearai
 outloud
+checkpointer
+langgraph
