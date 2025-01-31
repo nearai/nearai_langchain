@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nearai-langchain"
-version = "1.0.0"
+version = "0.0.1"
 description = "NearAI LangChain Integration"
 authors = ["Support <support@near.ai>"]
 readme = "README.md"
