@@ -105,9 +105,13 @@ jobs:
     - name: Build package
       run: poetry build
       if: ${{ github.event.inputs.publish-pypi == 'true' }}
+
+    - name: Verify PyPI token
+      run: poetry config pypi-token.pypi ${{ secrets.POETRY_PYPI_TOKEN_PYPI }}
+      if: ${{ github.event.inputs.publish-pypi == 'true' }}
       
     - name: Publish to PyPI
       env:
         POETRY_PYPI_TOKEN_PYPI: ${{ secrets.POETRY_PYPI_TOKEN_PYPI }}
-      run: poetry publish --build
+      run: poetry publish --vvv
       if: ${{ github.event.inputs.publish-pypi == 'true' }}
