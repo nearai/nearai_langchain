@@ -4,8 +4,8 @@
 
 import os
 
-from cdp_langchain.agent_toolkits import CdpToolkit
-from cdp_langchain.utils import CdpAgentkitWrapper
+from cdp_langchain.agent_toolkits import CdpToolkit  # type: ignore
+from cdp_langchain.utils import CdpAgentkitWrapper  # type: ignore
 from dotenv import load_dotenv
 from langgraph.prebuilt import create_react_agent
 

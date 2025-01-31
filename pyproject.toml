@@ -82,5 +82,5 @@ exclude = [
     ".mypy_cache",
     ".ruff_cache",
     "__pypackages__",
-    "examples",
 ]
+explicit_package_bases = true
