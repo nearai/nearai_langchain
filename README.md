@@ -84,8 +84,12 @@ orchestrator = NearAILangchainOrchestrator(globals())
 # To continue conversation in local mode:
 # orchestrator = NearAILangchainOrchestrator(globals(), thread_id="thread_xxxxxx")
 
-
+# Langchain chat model that can be passed to other Langchain & Langgraph libraries.
 model = orchestrator.chat_model
+
+# Nearai environment.
+# In remote mode thread is assigned, user messages are given, and an agent is run at least once per user message.
+# In local mode an agent is responsible to get and upload user messages.
 env = orchestrator.env
 
 if orchestrator.run_mode == RunMode.LOCAL:
