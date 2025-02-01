@@ -81,7 +81,7 @@ from langchain_core.messages import SystemMessage
 from nearai_langchain.orchestrator import NearAILangchainOrchestrator, RunMode
 
 orchestrator = NearAILangchainOrchestrator(globals())
-# To continue conversation in local mode:
+# To continue conversation on existing thread in local mode:
 # orchestrator = NearAILangchainOrchestrator(globals(), thread_id="thread_xxxxxx")
 
 # Langchain chat model that can be passed to other Langchain & Langgraph libraries.
