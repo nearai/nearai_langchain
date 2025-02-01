@@ -23,6 +23,7 @@ class LocalNearAIConfig:
 
     def client_config(self) -> ClientConfig:  # noqa: D102
         if self.config.auth is None:
+            print("Attempt to get local client config, nearai_langchain v ^0.0.11")
             print("NearAI authentication required. Running web-based login...")
             command = "nearai login --remote"
             sys.argv = shlex.split(command)
