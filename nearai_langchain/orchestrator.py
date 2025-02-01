@@ -60,6 +60,7 @@ class NearAILangchainOrchestrator:
 
         """
         self.run_mode = self._determine_run_mode(globals)
+        print(f"Running NearAILangchainOrchestrator, v ^0.0.11, mode = {self.run_mode}")
 
         metadata_path = "metadata.json"
         with open(metadata_path, "r") as file:
