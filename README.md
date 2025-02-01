@@ -76,19 +76,34 @@ python agent.py
 
 Example agent code:
 ```python
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import SystemMessage
 
-from nearai_langchain.orchestrator import NearAILangchainOrchestrator
+from nearai_langchain.orchestrator import NearAILangchainOrchestrator, RunMode
 
-# Orchestrator will read metadata.json from current directory
-model = NearAILangchainOrchestrator(globals())
+orchestrator = NearAILangchainOrchestrator(globals())
+# To continue conversation in local mode:
+# orchestrator = NearAILangchainOrchestrator(globals(), thread_id="thread_xxxxxx")
 
-messages = [
-    SystemMessage("Translate the following from English into Italian"),
-    HumanMessage("hi!"),
-]
 
-model.invoke(messages)
+model = orchestrator.chat_model
+env = orchestrator.env
+
+if orchestrator.run_mode == RunMode.LOCAL:
+    print("English -> Italian Translator")
+    user_input = input("\nEnglish: ")
+    env.add_user_message(user_input)
+
+messages = [SystemMessage("Translate the following from English into Italian")] + env.list_messages()
+
+result = model.invoke(messages)
+print(result)
+env.add_reply(result.content)
+if orchestrator.run_mode == RunMode.LOCAL:
+    print("-------------------")
+    print(result.content)
+    print("-------------------")
+
+env.mark_done()
 ```
 
 See `examples/` folder for more examples.
