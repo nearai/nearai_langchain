@@ -72,7 +72,7 @@ python agent.py
 
 # Or upload agent to nearai registry. Run from `nearai` repo:
 nearai registry upload <path_to_your_agent>/my_agent
-# Run in hub. Go to app.near.ai and lookup your agent.
+# Go to app.near.ai and lookup your agent. Run it.
 ```
 
 Example agent code:
