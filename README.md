@@ -35,7 +35,7 @@ This library is currently in active development.
             "defaults": {
               "model": "accounts/fireworks/models/llama-v3p1-70b-instruct",
               // Optionally, specify "model_provider"
-              "inference_framework": "langchain"  // Use "langchain" or "nearai" for inference
+              "inference_framework": "nearai"  // Use "langchain" or "nearai" for inference
             },
             "framework": "agentkit"  // Used by nearai hub to assign correct dependencies
          }
