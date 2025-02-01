@@ -4,7 +4,7 @@
 
 ## 🚧 Development Status
 
-This library is currently in active development.
+Agents built on this library can be run both locally and on app.near.ai. More features are in active development.
 
 ## 🎯 Key Purposes
 
