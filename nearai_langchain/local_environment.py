@@ -5,15 +5,15 @@ from openai import NOT_GIVEN, NotGiven
 from openai.types.beta.threads.message import Message
 from openai.types.beta.threads.message_create_params import Attachment
 
-from nearai_langchain.config import NEAR_AI_CONFIG
+from nearai_langchain.local_config import LOCAL_NEAR_AI_CONFIG
 
 
 class LocalEnvironment(object):
     """Local lightweight environment class for local runs."""
 
-    def __init__(self, thread_id: str, agent_id: str):  # noqa: D107
-        self.hub_client = NEAR_AI_CONFIG.get_hub_client()
-        self.agent_id = agent_id
+    def __init__(self, thread_id: str, agent_identifier: str):  # noqa: D107
+        self.hub_client = LOCAL_NEAR_AI_CONFIG.get_hub_client()
+        self.agent_identifier = agent_identifier
         if thread_id:
             thread = self.hub_client.beta.threads.retrieve(thread_id)
         else:
@@ -23,7 +23,7 @@ class LocalEnvironment(object):
 
         self.run = self.hub_client.beta.threads.runs.create(
             thread_id=self.thread_id,
-            assistant_id=self.agent_id,
+            assistant_id=self.agent_identifier,
             extra_body={"delegate_execution": True},
         )
 
@@ -55,7 +55,7 @@ class LocalEnvironment(object):
             role="assistant",
             content=message,
             extra_body={
-                "assistant_id": self.agent_id,
+                "assistant_id": self.agent_identifier,
                 "run_id": self.run.id,
             },
             attachments=attachments,
