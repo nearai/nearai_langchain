@@ -8,7 +8,7 @@ repository = "https://github.com/nearai/nearai_langchain"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
-nearai = "^0.1.6"
+nearai = "^0.1.10"
 langchain = "^0.3.4"
 langchain-fireworks = "^0.2.6"
 langchain-openai = "^0.2.4"

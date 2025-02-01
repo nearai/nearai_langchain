@@ -5,9 +5,7 @@ from functools import cached_property
 import fire  # type: ignore
 import openai
 from nearai.cli import LoginCLI  # type: ignore
-
-# from nearai.config import load_config
-from nearai.config import CONFIG  # type: ignore
+from nearai.config import load_config  # type: ignore
 from nearai.shared.client_config import ClientConfig  # type: ignore
 from nearai.shared.provider_models import ProviderModels  # type: ignore
 from openai import OpenAI
@@ -18,10 +16,9 @@ class CLI:
         self.login = LoginCLI()
 
 
-class NearAIConfig:
+class LocalNearAIConfig:
     def __init__(self) -> None:  # noqa: D107
-        # self.config = load_config()
-        self.config = CONFIG
+        self.config = load_config()
         pass
 
     def client_config(self) -> ClientConfig:  # noqa: D102
@@ -40,7 +37,7 @@ class NearAIConfig:
             sys.argv = shlex.split(save_command)  # Properly splits command respecting quotes
             fire.Fire(CLI)
 
-            # self.config = load_config()
+            self.config = load_config()
 
         return self.config.get_client_config()
 
@@ -59,4 +56,4 @@ class NearAIConfig:
         return ProviderModels(self.client_config())
 
 
-NEAR_AI_CONFIG = NearAIConfig()
+LOCAL_NEAR_AI_CONFIG = LocalNearAIConfig()

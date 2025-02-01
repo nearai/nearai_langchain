@@ -1,7 +1,6 @@
 from functools import cached_property
 from typing import Dict
 
-from nearai_langchain.config import NEAR_AI_CONFIG
 from nearai_langchain.constants import FIREWORKS, HYPERBOLIC
 
 
@@ -47,8 +46,8 @@ class NearAIAgentData:
         return defaults.get("model", "")
 
     @cached_property
-    def agent_id(self) -> str:  # noqa: D102
-        account_id = NEAR_AI_CONFIG.get_account_id()
+    def agent_identifier(self) -> str:  # noqa: D102
+        account_id = self.agent_metadata.get("namespace", "")
         name = self.agent_metadata.get("name", "")
         version = self.agent_metadata.get("version", "")
         return f"{account_id}/{name}/{version}"

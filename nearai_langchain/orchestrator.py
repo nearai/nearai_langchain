@@ -13,7 +13,7 @@ from nearai.openapi_client import EntryMetadataInput
 from nearai_langchain.agent_data import NearAIAgentData
 from nearai_langchain.constants import FIREWORKS, HYPERBOLIC
 from nearai_langchain.local_environment import LocalEnvironment
-from nearai_langchain.nearai_chat_model import NearAIChatModel
+from nearai_langchain.local_nearai_chat_model import LocalNearAIChatModel
 
 
 class RunMode(Enum):
@@ -30,14 +30,14 @@ class RunMode(Enum):
 class NearAILangchainOrchestrator:
     """Orchestrates chat model inference while tracking conversation history in NEAR AI."""
 
-    chat_model: BaseChatModel | NearAIChatModel
+    chat_model: BaseChatModel | LocalNearAIChatModel  # | NearAIChatModel
     run_mode: RunMode
     env: Environment | LocalEnvironment
 
     def __init__(
         self,
         globals: dict[str, Any],
-        chat_model: Optional[BaseChatModel | NearAIChatModel] = None,
+        chat_model: Optional[BaseChatModel] = None,
         skip_inference_framework_check: bool = False,
         thread_id: str = "",
     ):
@@ -46,8 +46,7 @@ class NearAILangchainOrchestrator:
         Args:
         ----
             globals: globals()
-            chat_model: Optional chat model to use. Can be either a LangChain chat model or NearAIChatModel.
-                LangChain chat model may use any provider.
+            chat_model: Optional non-nearai chat model to use.
                 If not provided, will create one based on metadata; fireworks and hyperbolic providers are supported.
             skip_inference_framework_check: If True, skips validation that the provided chat model matches
                 the inference framework specified in metadata. This is useful when deliberately mixing
@@ -72,7 +71,7 @@ class NearAILangchainOrchestrator:
         if self.run_mode == RunMode.REMOTE:
             self.env = globals["env"]
         else:
-            self.env = LocalEnvironment(thread_id, agent_data.agent_id)
+            self.env = LocalEnvironment(thread_id, agent_data.agent_identifier)
 
         inference_framework = agent_data.inference_framework
 
@@ -81,15 +80,16 @@ class NearAILangchainOrchestrator:
 
         if chat_model is None:
             if inference_framework == "nearai":
-                self.chat_model = NearAIChatModel(agent_data=agent_data)
+                if self.run_mode == RunMode.LOCAL:
+                    self.chat_model = LocalNearAIChatModel(agent_data=agent_data)
+                else:
+                    self.chat_model = self.env.langchain_chat_model
             else:
                 self.chat_model = _init_langchain_chat_model(agent_data.provider, agent_data.metadata_model)
         else:
             if not skip_inference_framework_check:
-                if inference_framework == "nearai" and not isinstance(chat_model, NearAIChatModel):
+                if inference_framework == "nearai":
                     raise ValueError("Metadata specifies nearai framework but received non-NearAI chat model")
-                if inference_framework == "langchain" and isinstance(chat_model, NearAIChatModel):
-                    raise ValueError("Metadata specifies langchain framework but received NearAI chat model")
             self.chat_model = chat_model
 
     @staticmethod

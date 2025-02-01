@@ -14,11 +14,11 @@ from langchain_openai import ChatOpenAI
 from pydantic import Field
 
 from nearai_langchain.agent_data import NearAIAgentData
-from nearai_langchain.config import NEAR_AI_CONFIG
+from nearai_langchain.local_config import LOCAL_NEAR_AI_CONFIG
 
 
-class NearAIChatModel(BaseChatModel):
-    """NEAR AI chat model implementation with NEAR AI inference."""
+class LocalNearAIChatModel(BaseChatModel):
+    """Local NEAR AI chat model implementation with NEAR AI inference."""
 
     agent_data: NearAIAgentData = Field(...)
     runner_api_key: str = Field(default="", exclude=True)
@@ -27,7 +27,7 @@ class NearAIChatModel(BaseChatModel):
     def model_post_init(self, *args: Any, **kwargs: Any) -> None:
         """Initialize after Pydantic initialization."""
         super().model_post_init(*args, **kwargs)
-        self._generate_auth_for_current_agent(NEAR_AI_CONFIG.client_config())
+        self._generate_auth_for_current_agent(LOCAL_NEAR_AI_CONFIG.client_config())
 
     def _generate_auth_for_current_agent(self, config):
         """Regenerate auth for the current agent."""
@@ -35,7 +35,7 @@ class NearAIChatModel(BaseChatModel):
             auth_bearer_token = config.auth.generate_bearer_token()
             new_token = json.loads(auth_bearer_token)
             new_token["runner_data"] = json.dumps(
-                {"agent": self.agent_data.agent_id, "runner_api_key": self.runner_api_key}
+                {"agent": self.agent_data.agent_identifier, "runner_api_key": self.runner_api_key}
             )
             auth_bearer_token = json.dumps(new_token)
             self.auth = auth_bearer_token
@@ -47,13 +47,13 @@ class NearAIChatModel(BaseChatModel):
         """Returns 'provider::model_full_path'."""
         provider = self.agent_data.provider
         model = self.agent_data.metadata_model
-        _, model_for_inference = NEAR_AI_CONFIG.provider_models.match_provider_model(model, provider)
+        _, model_for_inference = LOCAL_NEAR_AI_CONFIG.provider_models.match_provider_model(model, provider)
         return model_for_inference
 
     @cached_property
     def chat_open_ai_model(self) -> ChatOpenAI:  # noqa: D102
         os.environ["OPENAI_API_KEY"] = self.auth
-        return ChatOpenAI(model=self.inference_model, base_url=NEAR_AI_CONFIG.client_config().base_url)
+        return ChatOpenAI(model=self.inference_model, base_url=LOCAL_NEAR_AI_CONFIG.client_config().base_url)
 
     def _generate(
         self,
