@@ -24,7 +24,7 @@ orchestrator = NearAILangchainOrchestrator(globals())
 def initialize_agent():
     """Initialize the agent with CDP Agentkit."""
     # Initialize LLM.
-    llm = orchestrator.chat_model
+    llm = orchestrator.chat_model.chat_open_ai_model
 
     wallet_data = None
 
