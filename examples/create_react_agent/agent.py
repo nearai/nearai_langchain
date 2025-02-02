@@ -10,7 +10,7 @@ orchestrator = NearAILangchainOrchestrator(globals())
 def initialize_agent():
     """Initialize the agent."""
     # Initialize LLM.
-    llm = orchestrator.chat_model
+    llm = orchestrator.chat_model.chat_open_ai_model
 
     # Create ReAct Agent using the LLM and no tools.
     return create_react_agent(
