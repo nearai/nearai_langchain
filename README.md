@@ -33,9 +33,9 @@ Agents built on this library can be run both locally and on app.near.ai. More fe
       "details": {
          "agent": {
             "defaults": {
-              "model": "accounts/fireworks/models/llama-v3p1-70b-instruct",
-              // Optionally, specify "model_provider"
-              "inference_framework": "nearai"  // Use "langchain" or "nearai" for inference
+              "model": "qwen2p5-72b-instruct",
+              // Optionally, specify "model_provider". fireworks is used by default in nearai.
+              "inference_framework": "nearai"  // Use "langchain" or "nearai" for inference. Optional. Default is "nearai".
             },
             "framework": "agentkit"  // Used by nearai hub to assign correct dependencies
          }
@@ -87,6 +87,8 @@ orchestrator = NearAILangchainOrchestrator(globals())
 
 # Langchain chat model that can be passed to other Langchain & Langgraph libraries.
 model = orchestrator.chat_model
+# To get ChatOpenAI model:
+# model = orchestrator.chat_model.chat_open_ai_model
 
 # NEAR AI environment.
 # In remote mode thread is assigned, user messages are given, and an agent is run at least once per user message.
