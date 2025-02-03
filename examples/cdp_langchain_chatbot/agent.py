@@ -17,13 +17,12 @@ wallet_data_file = "wallet_data.txt"
 load_dotenv()
 
 orchestrator = NearAILangchainOrchestrator(globals())
-# To continue conversation in local mode:
+# To continue conversation on existing thread in local mode:
 # orchestrator = NearAILangchainOrchestrator(globals(), thread_id="thread_xxxxxx")
-
 
 def initialize_agent():
     """Initialize the agent with CDP Agentkit."""
-    # Initialize LLM.
+    # Get ChatOpenAI model.
     llm = orchestrator.chat_model.chat_open_ai_model
 
     wallet_data = None
@@ -68,6 +67,10 @@ def initialize_agent():
 
 
 executor = initialize_agent()
+
+# NEAR AI environment.
+# In remote mode thread is assigned, user messages are given, and an agent is run at least once per user message.
+# In local mode an agent is responsible to get and upload user messages.
 env = orchestrator.env
 
 if orchestrator.run_mode == RunMode.LOCAL:
@@ -87,4 +90,5 @@ for chunk in executor.stream({"messages": messages}):
         print(result)
         print("-------------------")
 
+# Run once per user message.
 env.mark_done()
