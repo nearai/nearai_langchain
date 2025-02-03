@@ -20,6 +20,7 @@ orchestrator = NearAILangchainOrchestrator(globals())
 # To continue conversation on existing thread in local mode:
 # orchestrator = NearAILangchainOrchestrator(globals(), thread_id="thread_xxxxxx")
 
+
 def initialize_agent():
     """Initialize the agent with CDP Agentkit."""
     # Get ChatOpenAI model.
