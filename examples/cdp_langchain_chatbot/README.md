@@ -33,4 +33,8 @@ poetry install
 
 ```bash
 python agent.py
+
+# Or upload agent to nearai registry. Run from `nearai` repo:
+nearai registry upload <path_to_your_agent>/my_agent
+# Go to app.near.ai and lookup your agent. Run it.
 ```
