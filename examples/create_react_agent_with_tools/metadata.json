@@ -1,7 +1,7 @@
 {
-    "name": "create_langchain_react_agent_example",
+    "name": "create_langchain_react_agent_with_tools_example",
     "version": "0.0.2",
-    "description": "Langchain create_react_agent example",
+    "description": "Langchain create_react_agent with tools example",
     "category": "agent",
     "tags": [],
     "details": {
