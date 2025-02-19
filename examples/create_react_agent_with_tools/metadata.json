@@ -1,0 +1,17 @@
+{
+    "name": "create_langchain_react_agent_example",
+    "version": "0.0.2",
+    "description": "Langchain create_react_agent example",
+    "category": "agent",
+    "tags": [],
+    "details": {
+      "agent": {
+        "defaults": {
+          "model": "qwen2p5-72b-instruct",
+          "inference_framework": "nearai"
+        },
+        "framework": "agentkit"
+      }
+    },
+    "show_entry": true
+  }

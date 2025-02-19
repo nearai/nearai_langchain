@@ -1108,55 +1108,16 @@ doc = ["Sphinx (>=7)", "packaging", "sphinx-autodoc-typehints (>=1.2.0)", "sphin
 test = ["coverage (>=7)", "hypothesis", "pytest"]
 
 [[package]]
-name = "cdp-agentkit-core"
-version = "0.0.11"
-description = "CDP Agentkit core primitives"
-optional = false
-python-versions = "<4.0,>=3.10"
-groups = ["main"]
-markers = "python_version == \"3.10\" or python_version == \"3.11\""
-files = [
-    {file = "cdp_agentkit_core-0.0.11-py3-none-any.whl", hash = "sha256:103259f7780e690da0aa13a00e6c40f95d0f1ea568d340adc40f309621a8f2c0"},
-    {file = "cdp_agentkit_core-0.0.11.tar.gz", hash = "sha256:00e30358877f01f8d0c2018b27c3cfa900e6e9a62fa766859321202abe3f9bea"},
-]
-
-[package.dependencies]
-cdp-sdk = ">=0.15.0,<0.16.0"
-pydantic = ">=2.0,<3.0"
-web3 = ">=7.6.0,<8.0.0"
-
-[[package]]
-name = "cdp-langchain"
-version = "0.0.13"
-description = "CDP Agentkit Langchain Extension"
-optional = false
-python-versions = "<4.0,>=3.10"
-groups = ["main"]
-markers = "python_version == \"3.10\" or python_version == \"3.11\""
-files = [
-    {file = "cdp_langchain-0.0.13-py3-none-any.whl", hash = "sha256:52f918b0df4f7dae20d29cef3b83bc1239e054ff46721355ab9a8875b2079cc4"},
-    {file = "cdp_langchain-0.0.13.tar.gz", hash = "sha256:e36badd1a632eb7823b20ef093405b45af185470c79dd2b4a8a7db869d3e2869"},
-]
-
-[package.dependencies]
-cdp-agentkit-core = ">=0.0.11,<0.0.12"
-cdp-sdk = ">=0.15.0,<0.16.0"
-langchain = ">=0.3.4,<0.4.0"
-langchain-openai = ">=0.2.4,<0.3.0"
-langgraph = ">=0.2.39,<0.3.0"
-pydantic = ">=2.0,<3.0"
-
-[[package]]
 name = "cdp-sdk"
-version = "0.15.0"
+version = "0.17.0"
 description = "CDP Python SDK"
 optional = false
 python-versions = "<4.0,>=3.10"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "cdp_sdk-0.15.0-py3-none-any.whl", hash = "sha256:f640c1cad0aee829ad24ee1b41dc3f40f74472a1da4d53e257ba996527a64f95"},
-    {file = "cdp_sdk-0.15.0.tar.gz", hash = "sha256:f7b015b2d3811d69db4ea5cb29cefc33fb47e7d2ce587f70222742ab602f610c"},
+    {file = "cdp_sdk-0.17.0-py3-none-any.whl", hash = "sha256:7fc886fc9556dca4085d0891e04f7ad303bcf1d3714f57cdef00a2a84782b33a"},
+    {file = "cdp_sdk-0.17.0.tar.gz", hash = "sha256:b2dfb03675c57994033d4b7d089ab6b85c56f0e437a6b4812f1d6332c2a7ac5f"},
 ]
 
 [package.dependencies]
@@ -1503,6 +1464,44 @@ files = [
 
 [package.dependencies]
 colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[[package]]
+name = "coinbase-agentkit"
+version = "0.1.2"
+description = "Coinbase AgentKit"
+optional = false
+python-versions = "<4.0,>=3.10"
+groups = ["main"]
+markers = "python_version == \"3.10\" or python_version == \"3.11\""
+files = [
+    {file = "coinbase_agentkit-0.1.2-py3-none-any.whl", hash = "sha256:0cec649a590720340904449fa8ffe38fafc77caff7f75d28cffb9d7a06967cb1"},
+    {file = "coinbase_agentkit-0.1.2.tar.gz", hash = "sha256:da0cc7ffdf1e02816da07b5e110203e81281451bc9fb4452ad1c3af0a5b45fa7"},
+]
+
+[package.dependencies]
+cdp-sdk = "0.17.0"
+pydantic = ">=2.0,<3.0"
+python-dotenv = ">=1.0.1,<2.0.0"
+requests = ">=2.31.0,<3.0.0"
+web3 = ">=7.6.0,<8.0.0"
+
+[[package]]
+name = "coinbase-agentkit-langchain"
+version = "0.1.0"
+description = "Coinbase AgentKit LangChain extension"
+optional = false
+python-versions = "<4.0,>=3.10"
+groups = ["main"]
+markers = "python_version == \"3.10\" or python_version == \"3.11\""
+files = [
+    {file = "coinbase_agentkit_langchain-0.1.0-py3-none-any.whl", hash = "sha256:c853eb2cf18f2c0cb715355c89434ea1db820875a457761721cffb2f559ba6ea"},
+    {file = "coinbase_agentkit_langchain-0.1.0.tar.gz", hash = "sha256:5d7c4039e6d86be338162b4f349156e87f1d9029864938e735e747e021f7c4a6"},
+]
+
+[package.dependencies]
+coinbase-agentkit = ">=0.1.0,<0.2.0"
+langchain = ">=0.3.4,<0.4.0"
+python-dotenv = ">=1.0.1,<2.0.0"
 
 [[package]]
 name = "coincurve"
@@ -2077,15 +2076,15 @@ tools = ["hypothesis (>=6.22.0,<6.108.7)"]
 
 [[package]]
 name = "eth-account"
-version = "0.13.4"
+version = "0.13.5"
 description = "eth-account: Sign Ethereum transactions and messages with local private keys"
 optional = false
 python-versions = "<4,>=3.8"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "eth_account-0.13.4-py3-none-any.whl", hash = "sha256:a4c109e9bad3a278243fcc028b755fb72b43e25b1e6256b3f309a44f5f7d87c3"},
-    {file = "eth_account-0.13.4.tar.gz", hash = "sha256:2e1f2de240bef3d9f3d8013656135d2a79b6be6d4e7885bce9cace4334a4a376"},
+    {file = "eth_account-0.13.5-py3-none-any.whl", hash = "sha256:e43fd30c9a7fabb882b50e8c4c41d4486d2f3478ad97c66bb18cfcc872fdbec8"},
+    {file = "eth_account-0.13.5.tar.gz", hash = "sha256:010c9ce5f3d2688106cf9bfeb711bb8eaf0154ea6f85325f54fecea85c2b3759"},
 ]
 
 [package.dependencies]
@@ -2101,9 +2100,9 @@ pydantic = ">=2.0.0"
 rlp = ">=1.0.0"
 
 [package.extras]
-dev = ["build (>=0.9.0)", "bumpversion (>=0.5.3)", "coverage", "hypothesis (>=4.18.0,<5)", "ipython", "mypy (==1.10.0)", "pre-commit (>=3.4.0)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)", "sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx-rtd-theme (>=1.0.0)", "towncrier (>=21,<22)", "tox (>=4.0.0)", "twine", "wheel"]
-docs = ["sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx-rtd-theme (>=1.0.0)", "towncrier (>=21,<22)"]
-test = ["coverage", "hypothesis (>=4.18.0,<5)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)"]
+dev = ["build (>=0.9.0)", "bump_my_version (>=0.19.0)", "coverage", "hypothesis (>=6.22.0,<6.108.7)", "ipython", "mypy (==1.10.0)", "pre-commit (>=3.4.0)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)", "sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx_rtd_theme (>=1.0.0)", "towncrier (>=24,<25)", "tox (>=4.0.0)", "twine", "wheel"]
+docs = ["sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx_rtd_theme (>=1.0.0)", "towncrier (>=24,<25)"]
+test = ["coverage", "hypothesis (>=6.22.0,<6.108.7)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)"]
 
 [[package]]
 name = "eth-hash"
@@ -2176,26 +2175,26 @@ test = ["asn1tools (>=0.146.2)", "eth-hash[pysha3]", "factory-boy (>=3.0.1)", "h
 
 [[package]]
 name = "eth-rlp"
-version = "2.1.0"
+version = "2.2.0"
 description = "eth-rlp: RLP definitions for common Ethereum objects in Python"
 optional = false
-python-versions = ">=3.8, <4"
+python-versions = "<4,>=3.8"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "eth-rlp-2.1.0.tar.gz", hash = "sha256:d5b408a8cd20ed496e8e66d0559560d29bc21cee482f893936a1f05d0dddc4a0"},
-    {file = "eth_rlp-2.1.0-py3-none-any.whl", hash = "sha256:6f476eb7e37d81feaba5d98aed887e467be92648778c44b19fe594aea209cde1"},
+    {file = "eth_rlp-2.2.0-py3-none-any.whl", hash = "sha256:5692d595a741fbaef1203db6a2fedffbd2506d31455a6ad378c8449ee5985c47"},
+    {file = "eth_rlp-2.2.0.tar.gz", hash = "sha256:5e4b2eb1b8213e303d6a232dfe35ab8c29e2d3051b86e8d359def80cd21db83d"},
 ]
 
 [package.dependencies]
 eth-utils = ">=2.0.0"
 hexbytes = ">=1.2.0"
 rlp = ">=0.6.0"
-typing-extensions = {version = ">=4.0.1", markers = "python_version <= \"3.10\""}
+typing_extensions = {version = ">=4.0.1", markers = "python_version <= \"3.10\""}
 
 [package.extras]
-dev = ["build (>=0.9.0)", "bumpversion (>=0.5.3)", "eth-hash[pycryptodome]", "ipython", "pre-commit (>=3.4.0)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)", "sphinx (>=6.0.0)", "sphinx-rtd-theme (>=1.0.0)", "towncrier (>=21,<22)", "tox (>=4.0.0)", "twine", "wheel"]
-docs = ["sphinx (>=6.0.0)", "sphinx-rtd-theme (>=1.0.0)", "towncrier (>=21,<22)"]
+dev = ["build (>=0.9.0)", "bump_my_version (>=0.19.0)", "eth-hash[pycryptodome]", "ipython", "mypy (==1.10.0)", "pre-commit (>=3.4.0)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)", "sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx_rtd_theme (>=1.0.0)", "towncrier (>=24,<25)", "tox (>=4.0.0)", "twine", "wheel"]
+docs = ["sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx_rtd_theme (>=1.0.0)", "towncrier (>=24,<25)"]
 test = ["eth-hash[pycryptodome]", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)"]
 
 [[package]]
@@ -3201,15 +3200,15 @@ tenacity = ">=8.1.0,<8.4.0 || >8.4.0,<10"
 
 [[package]]
 name = "langchain-core"
-version = "0.3.33"
+version = "0.3.36"
 description = "Building applications with LLMs through composability"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "langchain_core-0.3.33-py3-none-any.whl", hash = "sha256:269706408a2223f863ff1f9616f31903a5712403199d828b50aadbc4c28b553a"},
-    {file = "langchain_core-0.3.33.tar.gz", hash = "sha256:b5dd93a4e7f8198d2fc6048723b0bfecf7aaf128b0d268cbac19c34c1579b953"},
+    {file = "langchain_core-0.3.36-py3-none-any.whl", hash = "sha256:8410311862c7c674e4f3f120cfd8d1f3d003d6e7d8cb8f934746e222f7e865d9"},
+    {file = "langchain_core-0.3.36.tar.gz", hash = "sha256:dffdce8a554905f53f33c1d6a40633a45a8d47c17c5792753891dd73941cd57a"},
 ]
 
 [package.dependencies]
@@ -3243,19 +3242,19 @@ requests = ">=2,<3"
 
 [[package]]
 name = "langchain-openai"
-version = "0.2.14"
+version = "0.3.6"
 description = "An integration package connecting OpenAI and LangChain"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "langchain_openai-0.2.14-py3-none-any.whl", hash = "sha256:d232496662f79ece9a11caf7d798ba863e559c771bc366814f7688e0fe664fe8"},
-    {file = "langchain_openai-0.2.14.tar.gz", hash = "sha256:7a514f309e356b182a337c0ed36ab3fbe34d9834a235a3b85cb7f91ae775d978"},
+    {file = "langchain_openai-0.3.6-py3-none-any.whl", hash = "sha256:05f0869f6cc963e2ec9e2e54ea1038d9c2af784c67f0e217040dfc918b31649a"},
+    {file = "langchain_openai-0.3.6.tar.gz", hash = "sha256:7daf92e1cd98865ab5213ec5bec2cbd6c28f011e250714978b3a99c7e4fc88ce"},
 ]
 
 [package.dependencies]
-langchain-core = ">=0.3.27,<0.4.0"
+langchain-core = ">=0.3.35,<1.0.0"
 openai = ">=1.58.1,<2.0.0"
 tiktoken = ">=0.7,<1"
 
@@ -3277,15 +3276,15 @@ langchain-core = ">=0.3.29,<0.4.0"
 
 [[package]]
 name = "langgraph"
-version = "0.2.69"
+version = "0.2.74"
 description = "Building stateful, multi-actor applications with LLMs"
 optional = false
 python-versions = "<4.0,>=3.9.0"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "langgraph-0.2.69-py3-none-any.whl", hash = "sha256:b64a5755fa2c7f2f67608ff4ce0ef8c168b30a0fb551a6c1d2e19bf1d2268ce4"},
-    {file = "langgraph-0.2.69.tar.gz", hash = "sha256:77bd6efd967b4f092ec31d2148b3e6ba3c31e202b4f3a975dbb082b19b5bb057"},
+    {file = "langgraph-0.2.74-py3-none-any.whl", hash = "sha256:91a522df764e66068f1a6de09ea748cea0687912838f29218c1d1b92b1ca025f"},
+    {file = "langgraph-0.2.74.tar.gz", hash = "sha256:db6e63e0771e2e8fb17dc0e040007b32f009e0f114e35d8348e336eb15f068e5"},
 ]
 
 [package.dependencies]
@@ -5851,25 +5850,25 @@ typing-extensions = ">=4.12.2"
 
 [[package]]
 name = "rlp"
-version = "4.0.1"
+version = "4.1.0"
 description = "rlp: A package for Recursive Length Prefix encoding and decoding"
 optional = false
 python-versions = "<4,>=3.8"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "rlp-4.0.1-py3-none-any.whl", hash = "sha256:ff6846c3c27b97ee0492373aa074a7c3046aadd973320f4fffa7ac45564b0258"},
-    {file = "rlp-4.0.1.tar.gz", hash = "sha256:bcefb11013dfadf8902642337923bd0c786dc8a27cb4c21da6e154e52869ecb1"},
+    {file = "rlp-4.1.0-py3-none-any.whl", hash = "sha256:8eca394c579bad34ee0b937aecb96a57052ff3716e19c7a578883e767bc5da6f"},
+    {file = "rlp-4.1.0.tar.gz", hash = "sha256:be07564270a96f3e225e2c107db263de96b5bc1f27722d2855bd3459a08e95a9"},
 ]
 
 [package.dependencies]
 eth-utils = ">=2"
 
 [package.extras]
-dev = ["build (>=0.9.0)", "bumpversion (>=0.5.3)", "hypothesis (==5.19.0)", "ipython", "pre-commit (>=3.4.0)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)", "sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx-rtd-theme (>=1.0.0)", "towncrier (>=21,<22)", "tox (>=4.0.0)", "twine", "wheel"]
-docs = ["sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx-rtd-theme (>=1.0.0)", "towncrier (>=21,<22)"]
+dev = ["build (>=0.9.0)", "bump_my_version (>=0.19.0)", "hypothesis (>=6.22.0,<6.108.7)", "ipython", "pre-commit (>=3.4.0)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)", "sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx_rtd_theme (>=1.0.0)", "towncrier (>=24,<25)", "tox (>=4.0.0)", "twine", "wheel"]
+docs = ["sphinx (>=6.0.0)", "sphinx-autobuild (>=2021.3.14)", "sphinx_rtd_theme (>=1.0.0)", "towncrier (>=24,<25)"]
 rust-backend = ["rusty-rlp (>=0.2.1)"]
-test = ["hypothesis (==5.19.0)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)"]
+test = ["hypothesis (>=6.22.0,<6.108.7)", "pytest (>=7.0.0)", "pytest-xdist (>=2.4.0)"]
 
 [[package]]
 name = "rpds-py"
@@ -7190,15 +7189,15 @@ files = [
 
 [[package]]
 name = "web3"
-version = "7.7.0"
+version = "7.8.0"
 description = "web3: A Python library for interacting with Ethereum"
 optional = false
 python-versions = "<4,>=3.8"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "web3-7.7.0-py3-none-any.whl", hash = "sha256:2e29147c0f43cf191af788af8f004368b70994db40162f1240607f663dc68ea6"},
-    {file = "web3-7.7.0.tar.gz", hash = "sha256:4d0332b9a78b855e57ccebd9e1e74c8e855b95869ac7b8fe5878731593e76408"},
+    {file = "web3-7.8.0-py3-none-any.whl", hash = "sha256:c8771b3d8772f7104a0462804449beb57d36cef7bd8b411140f95a92fc46b559"},
+    {file = "web3-7.8.0.tar.gz", hash = "sha256:712bc9fd6b1ef6e467ee24c25b581e1951cab2cba17f9f548f12587734f2c857"},
 ]
 
 [package.dependencies]
@@ -7809,4 +7808,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.12"
-content-hash = "274580bb9ef3ed7d0882c2178992ca09532bd49fe755554a6cfd0248d6493f9e"
+content-hash = "db3d37d3ca26e8149084cd32481795cef5881a430bb6293a860f24775cb94271"

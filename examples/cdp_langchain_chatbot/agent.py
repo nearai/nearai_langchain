@@ -1,11 +1,23 @@
 # This is a somewhat simplified version of
-# https://github.com/coinbase/agentkit/blob/master/cdp-langchain/examples/chatbot-python/chatbot.py
+# https://github.com/coinbase/agentkit/blob/main/python/examples/langchain-cdp-chatbot/chatbot.py
 # that adds nearai integration: inference, environment, and threads.
 
+import json
 import os
 
-from cdp_langchain.agent_toolkits import CdpToolkit  # type: ignore
-from cdp_langchain.utils import CdpAgentkitWrapper  # type: ignore
+from coinbase_agentkit import (  # type: ignore
+    AgentKit,
+    AgentKitConfig,
+    CdpWalletProvider,
+    CdpWalletProviderConfig,
+    cdp_api_action_provider,
+    cdp_wallet_action_provider,
+    erc20_action_provider,
+    pyth_action_provider,
+    wallet_action_provider,
+    weth_action_provider,
+)
+from coinbase_agentkit_langchain import get_langchain_tools  # type: ignore
 from dotenv import load_dotenv
 from langgraph.prebuilt import create_react_agent
 
@@ -26,28 +38,39 @@ def initialize_agent():
     # Get ChatOpenAI model.
     llm = orchestrator.chat_model.chat_open_ai_model
 
+    # Initialize CDP Wallet Provider
     wallet_data = None
-
     if os.path.exists(wallet_data_file):
         with open(wallet_data_file) as f:
             wallet_data = f.read()
 
-    # Configure CDP Agentkit Langchain Extension.
-    values = {}
+    cdp_config = None
     if wallet_data is not None:
-        # If there is a persisted agentic wallet, load it and pass to the CDP Agentkit Wrapper.
-        values = {"cdp_wallet_data": wallet_data}
+        cdp_config = CdpWalletProviderConfig(wallet_data=wallet_data)
 
-    agentkit = CdpAgentkitWrapper(**values)
+    wallet_provider = CdpWalletProvider(cdp_config)
 
-    # persist the agent's CDP MPC Wallet Data.
-    wallet_data = agentkit.export_wallet()
+    agentkit = AgentKit(
+        AgentKitConfig(
+            wallet_provider=wallet_provider,
+            action_providers=[
+                cdp_api_action_provider(),
+                cdp_wallet_action_provider(),
+                erc20_action_provider(),
+                pyth_action_provider(),
+                wallet_action_provider(),
+                weth_action_provider(),
+            ],
+        )
+    )
+
+    wallet_data_json = json.dumps(wallet_provider.export_wallet().to_dict())
+
     with open(wallet_data_file, "w") as f:
-        f.write(wallet_data)
+        f.write(wallet_data_json)
 
-    # Initialize CDP Agentkit Toolkit and get tools.
-    cdp_toolkit = CdpToolkit.from_cdp_agentkit_wrapper(agentkit)
-    tools = cdp_toolkit.get_tools()
+    # use get_langchain_tools
+    tools = get_langchain_tools(agentkit)
 
     # Create ReAct Agent using the LLM and CDP Agentkit tools.
     return create_react_agent(
