@@ -8,12 +8,14 @@ repository = "https://github.com/nearai/nearai_langchain"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
-nearai = "^0.1.10"
+nearai = "^0.1.13"
 langchain = "^0.3.4"
 langchain-fireworks = "^0.2.6"
-langchain-openai = "^0.2.4"
-cdp-langchain = "^0.0.13"
+langchain-openai = "^0.3.6"
+langgraph = "^0.2.74"
 pydantic = ">=2.7.1,<=2.10.6"
+coinbase-agentkit = "^0.1.2"
+coinbase-agentkit-langchain = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.11.0"
