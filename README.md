@@ -81,7 +81,7 @@ orchestrator = NearAILangchainOrchestrator(globals())
 # To continue conversation on existing thread in local mode:
 # orchestrator = NearAILangchainOrchestrator(globals(), thread_id="thread_xxxxxx")
 
-# Langchain chat model that can be passed to other Langchain & LangGraph libraries.
+# Langchain chat model that can be passed to other LangChain & LangGraph libraries.
 model = orchestrator.chat_model
 
 # NEAR AI environment.
