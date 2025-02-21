@@ -3353,25 +3353,25 @@ pytest = ["pytest (>=7.0.0)", "rich (>=13.9.4,<14.0.0)"]
 
 [[package]]
 name = "litellm"
-version = "1.59.12"
+version = "1.61.13"
 description = "Library to easily interface with LLM API providers"
 optional = false
 python-versions = "!=2.7.*,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,!=3.7.*,>=3.8"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "litellm-1.59.12-py3-none-any.whl", hash = "sha256:72c19a7612ec4684c98b451762ef04b6edeaf0aae540e1f5108698ee812023b9"},
-    {file = "litellm-1.59.12.tar.gz", hash = "sha256:8d9aa62dc8e8b03c6e74536b9e2639a9355527a4e9c9e76af05ad03dd8a46c34"},
+    {file = "litellm-1.61.13-py3-none-any.whl", hash = "sha256:184376f26d39fba6975a0c9167166d857bebd0373939605c7181ff296affd2af"},
+    {file = "litellm-1.61.13.tar.gz", hash = "sha256:569102ae22c3df198dc5903f811582d61bf347951cacf67192511e391a1b3293"},
 ]
 
 [package.dependencies]
 aiohttp = "*"
 click = "*"
-httpx = ">=0.23.0,<0.28.0"
+httpx = ">=0.23.0"
 importlib-metadata = ">=6.8.0"
 jinja2 = ">=3.1.2,<4.0.0"
 jsonschema = ">=4.22.0,<5.0.0"
-openai = ">=1.55.3"
+openai = ">=1.61.0"
 pydantic = ">=2.0.0,<3.0.0"
 python-dotenv = ">=0.2.0"
 tiktoken = ">=0.7.0"
@@ -3881,15 +3881,15 @@ files = [
 
 [[package]]
 name = "nearai"
-version = "0.1.10"
+version = "0.1.13"
 description = "Near AI CLI"
 optional = false
 python-versions = "<3.12,>=3.9"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "nearai-0.1.10-py3-none-any.whl", hash = "sha256:e9bd47bfd300b19cd00fabcc57e61564ecdbf80e2e4079e88e99a383f62dec1b"},
-    {file = "nearai-0.1.10.tar.gz", hash = "sha256:e28ee37ab2409ab1bf8d2e988cf3817a3b3c34ff05f199008046e0063f981c3c"},
+    {file = "nearai-0.1.13-py3-none-any.whl", hash = "sha256:56956185ef70b5073c2c65cb1834d9a4ee4aca48ae7a2cbfafe7baa8e9cff8c1"},
+    {file = "nearai-0.1.13.tar.gz", hash = "sha256:52bfd036ccac05e0373cd66acc8b4ce6b20dde3f7145a2396bcdb230b23d99ec"},
 ]
 
 [package.dependencies]
@@ -3905,11 +3905,11 @@ fastapi = ">=0.111.0,<0.112.0"
 fire = ">=0.6.0,<0.7.0"
 fireworks-ai = ">=0.15.7,<0.16.0"
 jinja2 = ">=3.1.4,<4.0.0"
-litellm = ">=1.41.0,<2.0.0"
+litellm = ">=1.60.5,<2.0.0"
 loguru = ">=0.7.2,<0.8.0"
 mypy-boto3 = ">=1.34.147,<2.0.0"
 mypy-boto3-s3 = ">=1.34.138,<2.0.0"
-openai = ">=1.30.1,<2.0.0"
+openai = ">=1.61.1,<2.0.0"
 pandas-stubs = ">=2.2.2.240603,<3.0.0"
 peft = ">=0.10.0,<0.11.0"
 poetry = ">=2.0.1,<3.0.0"
@@ -3942,6 +3942,7 @@ types-ujson = ">=5.10.0.20240515,<6.0.0"
 uvicorn = ">=0.32.0,<0.33.0"
 
 [package.extras]
+docs = ["mkdocs (>=1.6.0)", "mkdocs-embed-external-markdown (>=3.0.2)", "mkdocs-exclude (>=1.0.2)", "mkdocs-material[imaging] (>=9.5.31)", "mkdocs-minify-plugin (>=0.8.0)", "mkdocs-redirects (>=1.2.1)", "mkdocs-redirects (>=1.2.1)", "mkdocs-simple-hooks (>=0.1.5)", "mkdocstrings (>=0.25.2)", "mkdocstrings-python (>=1.10.7)", "pillow (>=10.4.0)"]
 explatform = ["fabric", "flask", "gunicorn", "requests", "shortuuid"]
 hub = ["apscheduler", "chardet", "cryptography", "fastapi", "fastapi-cli", "openpyxl", "pypdf", "python-docx", "python-dotenv", "python-pptx", "shortuuid", "sqlmodel", "tweepy"]
 lean = ["lean-dojo"]
@@ -4229,15 +4230,15 @@ signedtoken = ["cryptography (>=3.0.0)", "pyjwt (>=2.0.0,<3)"]
 
 [[package]]
 name = "openai"
-version = "1.61.0"
+version = "1.63.2"
 description = "The official Python library for the openai API"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 markers = "python_version == \"3.10\" or python_version == \"3.11\""
 files = [
-    {file = "openai-1.61.0-py3-none-any.whl", hash = "sha256:e8c512c0743accbdbe77f3429a1490d862f8352045de8dc81969301eb4a4f666"},
-    {file = "openai-1.61.0.tar.gz", hash = "sha256:216f325a24ed8578e929b0f1b3fb2052165f3b04b0461818adaa51aa29c71f8a"},
+    {file = "openai-1.63.2-py3-none-any.whl", hash = "sha256:1f38b27b5a40814c2b7d8759ec78110df58c4a614c25f182809ca52b080ff4d4"},
+    {file = "openai-1.63.2.tar.gz", hash = "sha256:aeabeec984a7d2957b4928ceaa339e2ead19c61cfcf35ae62b7c363368d26360"},
 ]
 
 [package.dependencies]
@@ -7808,4 +7809,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.12"
-content-hash = "db3d37d3ca26e8149084cd32481795cef5881a430bb6293a860f24775cb94271"
+content-hash = "679045685eabf9011e1574e6eb4321bbb75116cac7f1fc217a1a7af8acbc0f26"
