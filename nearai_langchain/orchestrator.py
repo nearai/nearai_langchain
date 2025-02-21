@@ -14,6 +14,7 @@ from nearai_langchain.agent_data import NearAIAgentData
 from nearai_langchain.constants import FIREWORKS, HYPERBOLIC
 from nearai_langchain.local_environment import LocalEnvironment
 from nearai_langchain.local_nearai_chat_model import LocalNearAIChatModel
+from nearai_langchain.remote_nearai_chat_model import RemoteNearAIChatModel
 
 
 class RunMode(Enum):
@@ -84,7 +85,7 @@ class NearAILangchainOrchestrator:
                 if self.run_mode == RunMode.LOCAL:
                     self.chat_model = LocalNearAIChatModel(agent_data=agent_data)
                 else:
-                    self.chat_model = self.env.langchain_chat_model
+                    self.chat_model = RemoteNearAIChatModel(env=self.env)
             else:
                 self.chat_model = _init_langchain_chat_model(agent_data.provider, agent_data.metadata_model)
         else:
