@@ -14,7 +14,7 @@ langchain-fireworks = "^0.2.6"
 langchain-openai = "^0.3.6"
 langgraph = "^0.2.74"
 pydantic = ">=2.7.1,<=2.10.6"
-coinbase-agentkit = "^0.1.2"
+coinbase-agentkit = {git = "https://github.com/wwwehr/agentkit.git", branch = "nillion-secretvault", subdirectory = "python/coinbase-agentkit"}
 coinbase-agentkit-langchain = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
