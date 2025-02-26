@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "cdp_langchain_chatbot_with_nillion_secretvault"
+version = "0.0.1"
+description = "Coinbase agentkit chatbot example usage with Nillion SecretVault"
+authors = []
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+nearai-langchain = "^0.0.13"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
