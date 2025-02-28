@@ -14,7 +14,7 @@ poetry install
 ## Run
 
 ```bash
-python agent.py
+python3.11 agent.py
 ```
 
 Example prompt: Call frankenfurtership, then pass its result to frankenassesment
