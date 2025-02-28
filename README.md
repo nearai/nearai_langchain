@@ -64,7 +64,7 @@ my_agent/
 cd my_agent
 
 # Run your agent locally
-python agent.py
+python3.11 agent.py
 
 # Or upload agent to nearai registry. Run from `nearai` repo:
 nearai registry upload <path_to_your_agent>/my_agent
