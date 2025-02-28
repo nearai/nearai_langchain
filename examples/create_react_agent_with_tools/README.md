@@ -17,4 +17,4 @@ poetry install
 python3.11 agent.py
 ```
 
-Example prompt: Call frankenfurtership, then pass its result to frankenassesment
+Example prompt: `Call frankenfurtership, then pass its result to frankenassesment`
