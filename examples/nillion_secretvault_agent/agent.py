@@ -28,6 +28,8 @@ wallet_data_file = "wallet_data.txt"
 
 load_dotenv()
 
+NETWORK_ID = os.environ.get("NETWORK_ID", "base-sepolia")
+
 orchestrator = NearAILangchainOrchestrator(globals())
 # To continue conversation on existing thread in local mode:
 # orchestrator = NearAILangchainOrchestrator(globals(), thread_id="thread_xxxxxx")
@@ -44,11 +46,9 @@ def initialize_agent():
         with open(wallet_data_file) as f:
             wallet_data = f.read()
 
-    cdp_config = CdpWalletProviderConfig(network_id=os.environ["NETWORK_ID"])
+    cdp_config = CdpWalletProviderConfig(network_id=NETWORK_ID)
     if wallet_data is not None:
-        cdp_config = CdpWalletProviderConfig(
-            network_id=NETWORK_ID, wallet_data=wallet_data
-        )
+        cdp_config = CdpWalletProviderConfig(network_id=NETWORK_ID, wallet_data=wallet_data)
 
     wallet_provider = CdpWalletProvider(cdp_config)
 
