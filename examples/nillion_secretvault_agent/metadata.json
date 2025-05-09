@@ -1,0 +1,19 @@
+{
+  "name": "cdp_langchain_chatbot_with_nillion_secretvault",
+  "version": "0.0.27",
+  "description": "Coinbase agentkit chatbot example using Nillion SecretVault",
+  "category": "agent",
+  "tags": [],
+  "details": {
+    "agent": {
+      "defaults": {
+        "max_iterations": 1,
+        "model_max_tokens": 10000,
+        "model": "qwen2p5-72b-instruct",
+        "inference_framework": "nearai"
+      },
+      "framework": "agentkit"
+    }
+  },
+  "show_entry": true
+}
